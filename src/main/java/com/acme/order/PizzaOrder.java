@@ -6,12 +6,12 @@ public class PizzaOrder {
 
 	private Date estimatedDeliveryTime;
 	private Date finishTime;
-	private OrderStatus status;
+	private OrderStatus state;
 	private Customer customer;
 	private PizzaType pizzaType;
 
 	public PizzaOrder(OrderStatus status, Customer customer, PizzaType pizzaType) {
-		this.status = status;
+		this.state = status;
 		this.customer = customer;
 		this.pizzaType = pizzaType;
 	}
@@ -21,16 +21,26 @@ public class PizzaOrder {
 	}
 
 	public Date getEstimatedTime() {
-
 		return estimatedDeliveryTime;
 	}
 
 	public void cancel() {
-		this.status = OrderStatus.CANCELLED;
+		this.state = OrderStatus.CANCELLED;
+	}
+
+	public boolean isCreated() {
+		return this.state == OrderStatus.CREATED;
+	}
+
+	public boolean isCancelled() {
+		return this.state == OrderStatus.CANCELLED;
+	}
+
+	public boolean isDelivered() {
+		return this.state == OrderStatus.DELIVERED;
 	}
 
 	public String getEmail() {
-
 		return customer.getEmail();
 	}
 
@@ -39,7 +49,7 @@ public class PizzaOrder {
 	}
 
 	public void deliver() {
-		this.status = OrderStatus.DELIVERED;
+		this.state = OrderStatus.DELIVERED;
 		finishTime = new Date();
 	}
 
@@ -47,7 +57,7 @@ public class PizzaOrder {
 		if (estimatedDeliveryTime == null) {
 			return true;
 		}
-		if (status == OrderStatus.DELIVERED) {
+		if (state == OrderStatus.DELIVERED) {
 			return estimatedDeliveryTime.after(finishTime);
 		}
 		throw new IllegalStateException("The Pizza is not delivered yet!");
