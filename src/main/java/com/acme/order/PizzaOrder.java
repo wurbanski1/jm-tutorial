@@ -10,8 +10,8 @@ public class PizzaOrder {
 	private Customer customer;
 	private PizzaType pizzaType;
 
-	public PizzaOrder(OrderStatus status, Customer customer, PizzaType pizzaType) {
-		this.state = status;
+	public PizzaOrder(Customer customer, PizzaType pizzaType) {
+		this.state = OrderStatus.CREATED;
 		this.customer = customer;
 		this.pizzaType = pizzaType;
 	}
