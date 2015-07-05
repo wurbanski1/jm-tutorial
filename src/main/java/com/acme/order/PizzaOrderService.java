@@ -18,7 +18,7 @@ public class PizzaOrderService {
 		try {
 			PizzaOrder order = orderFactory.create(customer, type);
 			Date date = deliveryTimeService.getTime(customer, type);
-			order.withTime(date);
+			order.withEstimatedTime(date);
 			orderDatabase.save(order);
 			mailSender.send(createMessage(order), customer.getEmail());
 		} catch (Exception e) {
@@ -28,7 +28,7 @@ public class PizzaOrderService {
 
 	private DeliveryTemplate createMessage(PizzaOrder order) {
 		DeliveryTemplate template = messageTemplate.getDeliveryTemplpate();
-		template.putTime(order.getTime());
+		template.putTime(order.getEstimatedTime());
 		template.putAddress(order.getAddress());
 		return template;
 	}

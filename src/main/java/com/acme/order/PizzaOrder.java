@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class PizzaOrder {
 
-	private Date deliveryTime;
+	private Date estimatedDeliveryTime;
 	private Date finishTime;
 	private OrderStatus status;
 	private Customer customer;
@@ -16,13 +16,13 @@ public class PizzaOrder {
 		this.pizzaType = pizzaType;
 	}
 
-	public void withTime(Date date) {
-		this.deliveryTime = date;
+	public void withEstimatedTime(Date date) {
+		this.estimatedDeliveryTime = date;
 	}
 
-	public Date getTime() {
+	public Date getEstimatedTime() {
 
-		return deliveryTime;
+		return estimatedDeliveryTime;
 	}
 
 	public void cancel() {
@@ -44,12 +44,15 @@ public class PizzaOrder {
 	}
 
 	public boolean wasDeliveredOnTime() {
+		if (estimatedDeliveryTime == null) {
+			return true;
+		}
 		if (status == OrderStatus.DELIVERED) {
-			return deliveryTime.after(finishTime);
+			return estimatedDeliveryTime.after(finishTime);
 		}
 		throw new IllegalStateException("The Pizza is not delivered yet!");
 	}
-	
+
 	public PizzaType getPizzaType() {
 		return pizzaType;
 	}

@@ -1,4 +1,4 @@
-package com.acme;
+package com.acme.calc;
 
 import org.junit.Test;
 
