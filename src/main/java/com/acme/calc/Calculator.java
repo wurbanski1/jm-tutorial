@@ -7,10 +7,9 @@ public class Calculator {
 	}
 
 	public Double subtract(Double minuend, Double subtrahend) {
-		return minuend 
-				- subtrahend;
+		return minuend - subtrahend;
 	}
-	
+
 	public Double multiply(Double multiplicand, Double multipiler) {
 		return multiplicand * multipiler;
 	}
