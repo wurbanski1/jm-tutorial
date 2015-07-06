@@ -44,7 +44,7 @@ public class PizzaOrderServiceTest {
 		Assert.assertTrue(givenPizzaOrder.isCancelled());
 		ArgumentCaptor<String> sentEmailAddress = ArgumentCaptor.forClass(String.class);
 		Mockito.verify(mailSender).send(Mockito.any(Template.class), sentEmailAddress.capture());
-//		Assert.assertTrue(sentEmailAddress.getValue().equals(givenPizzaOrder.getEmail()));
+		// Assert.assertTrue(sentEmailAddress.getValue().equals(givenPizzaOrder.getEmail()));
 
 		ArgumentCaptor<PizzaOrder> savedPizzaOrder = ArgumentCaptor.forClass(PizzaOrder.class);
 		Mockito.verify(orderDatabase).save(savedPizzaOrder.capture());
@@ -55,16 +55,14 @@ public class PizzaOrderServiceTest {
 	public void createdOrderShouldBeEstimatedAndEmailShouldBeSent() {
 		// given
 		Customer customer = givenCustomer();
+		PizzaOrder pizzaOrder = givenPizzaOrder();
 		// stub
 		PizzaType pizzaType = Mockito.mock(PizzaType.class);
 		OrderFactory orderFactory = Mockito.mock(OrderFactory.class);
-		PizzaOrder pizzaOrder = Mockito.mock(PizzaOrder.class);
 		Date date = Mockito.mock(Date.class);
-		
-		Mockito.when(orderFactory.create(Mockito.any(Customer.class), Mockito.any(PizzaType.class)))
-				.thenReturn(pizzaOrder);
-		Mockito.when(deliveryTimeService.getTime(Mockito.any(Customer.class), Mockito.any(PizzaType.class)))
-				.thenReturn(date);
+
+		Mockito.when(orderFactory.create(customer, pizzaType)).thenReturn(pizzaOrder);
+		Mockito.when(deliveryTimeService.getTime(customer, pizzaType)).thenReturn(date);
 		Mockito.when(pizzaOrder.getEstimatedTime()).thenReturn(date);
 		// when
 		pizzaOrderService.createOrder(customer, pizzaType);
@@ -74,7 +72,7 @@ public class PizzaOrderServiceTest {
 		ArgumentCaptor<PizzaOrder> savedPizzaOrder = ArgumentCaptor.forClass(PizzaOrder.class);
 		Mockito.verify(orderDatabase).save(savedPizzaOrder.capture());
 		Assert.assertTrue(savedPizzaOrder.getValue().equals(pizzaOrder));
-		
+
 		ArgumentCaptor<String> sentEmailAddress = ArgumentCaptor.forClass(String.class);
 		Mockito.verify(mailSender).send(Mockito.any(Template.class), sentEmailAddress.capture());
 		Assert.assertTrue(sentEmailAddress.getValue().equals(pizzaOrder.getEmail()));
