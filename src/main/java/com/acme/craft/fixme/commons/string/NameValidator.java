@@ -13,4 +13,9 @@ public class NameValidator {
 		String johnName = "John";
 		return name == johnName;
 	}
+
+	public String validationMessage(String firstName, String lastName, String nick) {
+		return "Provided name is not valid. First name: " + firstName + ", lastName: " + lastName + " nick:" + nick;
+	}
+
 }
