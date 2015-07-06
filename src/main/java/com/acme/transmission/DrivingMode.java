@@ -11,7 +11,6 @@ public enum DrivingMode {
 	}
 
 	public int lowerLimit() {
-		//test
 		return lowerRpmLimit;
 	}
 
