@@ -1,4 +1,4 @@
-package com.acme.craft.solid.fixme.open.closed;
+package com.acme.craft.fixme.solid.open.closed;
 
 public class GraphicsEditor {
 	

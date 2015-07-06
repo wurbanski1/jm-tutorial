@@ -1,4 +1,4 @@
-package com.acme.craft.solid.fixme.dependency.inversion;
+package com.acme.craft.fixme.solid.dependency.inversion;
 
 public class Switch {
 

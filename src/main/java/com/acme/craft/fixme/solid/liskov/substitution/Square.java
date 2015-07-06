@@ -1,4 +1,4 @@
-package com.acme.craft.solid.fixme.liskov.substitution;
+package com.acme.craft.fixme.solid.liskov.substitution;
 
 public class Square extends Rectangle {
 
