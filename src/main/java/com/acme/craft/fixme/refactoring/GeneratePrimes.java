@@ -73,3 +73,15 @@ public class GeneratePrimes {
 			return new int[0]; // return null array if bad input.
 	}
 }
+
+/*
+hints:
+- init
+- sieve
+- prepareResults
+
+then
+- check variables range
+- refactor for more appropriate names
+- extract and name conditions
+ */
