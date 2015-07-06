@@ -3,6 +3,7 @@ package com.acme.calc;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class CalculatorTest {
 
@@ -53,7 +54,7 @@ public class CalculatorTest {
 		Assert.assertTrue(result == 2);
 	}
 	
-	@Test (expected = DivisorCannotBeZeroException.class)
+	@Test (expected = 	DivisorCannotBeZeroException.class)
 	public void divisionShouldReturnDivisorException() {
 		//given
 		double firstNumber = 10.0;
