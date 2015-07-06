@@ -1,4 +1,5 @@
 package com.acme.craft.fixme.cleancode;
 
-public class TestClass {
+public class ResourceHolder {
+
 }
