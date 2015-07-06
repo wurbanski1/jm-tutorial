@@ -10,7 +10,7 @@ public class PropertyService {
 			property.setValue(value);
 			repository.save(property);
 		} else {
-            throw new RuntimeException("Property not found:");
+            throw new RuntimeException("Property not found:" + propertyId);
         }
 	}
 }
