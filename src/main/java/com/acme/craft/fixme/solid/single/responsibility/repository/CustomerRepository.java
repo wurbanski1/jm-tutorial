@@ -1,4 +1,4 @@
-package com.acme.craft.fixme.solid.single.responsibility;
+package com.acme.craft.fixme.solid.single.responsibility.repository;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
