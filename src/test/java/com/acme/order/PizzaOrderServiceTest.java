@@ -1,7 +1,10 @@
 package com.acme.order;
 
+<<<<<<< HEAD
 import java.sql.Date;
 
+=======
+>>>>>>> upstream/master
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,13 +27,20 @@ public class PizzaOrderServiceTest {
 		orderFactory = Mockito.mock(OrderFactory.class);
 		deliveryTimeService = Mockito.mock(DeliveryTimeService.class);
 		messageTemplate = Mockito.mock(MessageTemplateService.class);
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 		pizzaOrderService = new PizzaOrderService(mailSender, orderDatabase,
 				orderFactory, deliveryTimeService, messageTemplate);
 	}
 
 	@Test
+<<<<<<< HEAD
 	public void cancelledOrderShouldBePersistedAndEmailShouldBeSent() {
+=======
+	public void cancelledOrderShouldBePersistedAndEmailShoudlBeSent() {
+>>>>>>> upstream/master
 		// given
 		String pizzaOrderId = "fake_id";
 		PizzaOrder givenPizzaOrder = givenPizzaOrder();
@@ -44,16 +54,25 @@ public class PizzaOrderServiceTest {
 		pizzaOrderService.cancelOrder(pizzaOrderId);
 		// then
 		Assert.assertTrue(givenPizzaOrder.isCancelled());
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 		ArgumentCaptor<String> sentEmailAddress = ArgumentCaptor
 				.forClass(String.class);
 		Mockito.verify(mailSender).send(Mockito.any(Template.class),
 				sentEmailAddress.capture());
+<<<<<<< HEAD
 		// Assert.assertTrue(sentEmailAddress.getValue().equals(givenPizzaOrder.getEmail()));
+=======
+		Assert.assertTrue(sentEmailAddress.getValue().equals(
+				givenPizzaOrder.getEmail()));
+>>>>>>> upstream/master
 
 		ArgumentCaptor<PizzaOrder> savedPizzaOrder = ArgumentCaptor
 				.forClass(PizzaOrder.class);
 		Mockito.verify(orderDatabase).save(savedPizzaOrder.capture());
+<<<<<<< HEAD
 		Assert.assertTrue(savedPizzaOrder.getValue().equals(givenPizzaOrder));
 
 	}
@@ -104,12 +123,30 @@ public class PizzaOrderServiceTest {
 		Customer customer = givenCustomer();
 		PizzaType pizzaType = Mockito.mock(PizzaType.class);
 		PizzaOrder givenOrder = new PizzaOrder(customer, pizzaType);
+=======
+		
+		Assert.assertTrue(savedPizzaOrder.getValue().equals(givenPizzaOrder));
+
+	}
+
+	private PizzaOrder givenPizzaOrder() {
+		Customer customer = givenCustomer();
+		PizzaType type = Mockito.mock(PizzaType.class);
+		PizzaOrder givenOrder = new PizzaOrder(customer, type);
+>>>>>>> upstream/master
 		return givenOrder;
 	}
 
 	private Customer givenCustomer() {
+<<<<<<< HEAD
 		Customer customer = new Customer();
 		return customer;
 	}
 
+=======
+		// String customerEmail = "fake_email";
+		Customer customer = new Customer();
+		return customer;
+	}
+>>>>>>> upstream/master
 }
