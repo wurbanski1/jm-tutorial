@@ -11,6 +11,7 @@ public class UserService {
 	public HashSet doSomethingDifferent(List<User> users) {
 		HashSet<String> usrnms = new HashSet<String>();
 		for (int i = users.size(); i >= 0; i--) {
+			User user = new User();
 			if (users.get(i).getAge() > 18) {
 				String temp = users.get(i).getFullName();
 				usrnms.add(temp);

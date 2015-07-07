@@ -2,8 +2,9 @@ package com.acme.craft.fixme.dry;
 
 public class User {
 
-	
 	private Integer age;
+	private String login;
+	private String fullName;
 	
 	public String getLogin() {
 		return login;
@@ -12,7 +13,6 @@ public class User {
 		this.login = login;
 	}
 	
-	private String login;
 	public Integer getAge() {
 		return age;
 	}
@@ -22,9 +22,11 @@ public class User {
 	public String getFullName() {
 		return fullName;
 	}
-	private String fullName;
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+	public boolean isAdult() {
+		
 	}
 	
 	
