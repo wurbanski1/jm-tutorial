@@ -6,21 +6,21 @@ public interface Shape {
 
 	int getArea();
 
-	int computeDiameter();
-
 	int getWidth();
 
 	int getHeight();
 
 	int getDepth();
+	
+	int computeDiameter();
+	
+	int getCornerCount();
+
+	int getDimensions();
 
 	double getVolume();
 
 	double getCircumference();
-
-	int getCornerCount();
-
-	int getDimensions();
 
 	Color getColor();
 
