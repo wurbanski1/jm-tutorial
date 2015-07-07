@@ -51,11 +51,12 @@ public class PizzaOrderServiceTest {
 		Assert.assertTrue(savedPizzaOrder.getValue().equals(givenPizzaOrder));
 
 	}
-
+	
+	@Test
 	public void createdOrderShouldBeEstimatedAndEmailShouldBeSent() {
 		// given
 		Customer customer = givenCustomer();
-		PizzaOrder pizzaOrder = givenPizzaOrder();
+		PizzaOrder pizzaOrder = Mockito.mock(PizzaOrder.class);
 		// stub
 		PizzaType pizzaType = Mockito.mock(PizzaType.class);
 		OrderFactory orderFactory = Mockito.mock(OrderFactory.class);
